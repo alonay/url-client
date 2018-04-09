@@ -20,7 +20,7 @@ class LeaderBoard extends React.Component {
   }
 
   getLinks = () => {
-    fetch('http://localhost:3000/links')
+    fetch(process.env.REACT_APP_API_URL + '/links')
       .then(res => res.json())
       .then(json => this.showLeaders(json))
   }
@@ -32,7 +32,7 @@ class LeaderBoard extends React.Component {
         {
           this.state.links.map((link, index) => {
             return (
-              <li>{index + 1} - {link.long}</li>
+              <li key={link.long + index}>{link.long}</li>
             )
           })
         }
