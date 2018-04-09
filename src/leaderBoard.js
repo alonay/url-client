@@ -5,7 +5,8 @@ class LeaderBoard extends React.Component {
     super(props)
 
     this.state = {
-      links: []
+      links: [],
+      showLeaders: false
     }
   }
 
@@ -13,30 +14,45 @@ class LeaderBoard extends React.Component {
     this.getLinks()
   }
 
-  showLeaders = (json) => {
+  setLeaders = (json) => {
     this.setState({
       links: json,
+    })
+  }
+
+  toggleLeaders = () => {
+    this.setState({
+      showLeaders: !this.state.showLeaders
     })
   }
 
   getLinks = () => {
     fetch(process.env.REACT_APP_API_URL + '/links')
       .then(res => res.json())
-      .then(json => this.showLeaders(json))
+      .then(json => this.setLeaders(json))
   }
 
-
   render() {
+    let list = <ol>
+      {
+        this.state.links.map((link, index) => {
+          return (
+            <li key={link.long + index}>{link.long}</li>
+          )
+        })
+      }
+    </ol>
+
     return (
-      <ol>
-        {
-          this.state.links.map((link, index) => {
-            return (
-              <li key={link.long + index}>{link.long}</li>
-            )
-          })
-        }
-      </ol>
+      <div className="leaders">
+        <button
+          className="top"
+          onClick={this.toggleLeaders}
+        >
+          See Top Links
+        </button><br/><br/><br/><br/>
+        {this.state.showLeaders && list}
+      </div>
     )
   }
 }

@@ -2,24 +2,70 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
-  background-color: #222;
+  background-color: transparent;
   height: 150px;
-  padding: 20px;
+  padding: 30px;
   color: white;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+
 }
 
-.App-title {
-  font-size: 1.5em;
+.App-title{
+  margin-left: 15%;
+  font-size: 35px;
+  margin-top: .2%;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+
 }
 
-.App-intro {
-  font-size: large;
+.maker{
+  margin-top: 27.3%;
+  margin-left: -5%;
+  font-size: 12px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+}
+.fname{
+  border-radius: 50px;
+  padding: 10px 20px;
+}
+.button{
+  border-radius: 50px;
+  padding: 10px 20px;
+  background-color: ##fdf2d0;
+  border-color: #bf9c48;
+}
+
+.leaders{
+  color: black;
+  margin-left: 40%;
+  margin-top: 9%;
+}
+.top{
+
+
+  border-radius: 50px;
+  padding: 40px 50px;
+  background-color: #fbe5a3;
+  border-color: #bf9c48;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 18px;
+}
+ol {
+  font-size: 8;
+  padding: 20px;
+}
+body {
+  background-image: url("/lynxstand.png");
+  background-size: cover;
+  background-repeat: no-repeat
 }
 
 @keyframes App-logo-spin {
