@@ -51,7 +51,7 @@ class LeaderBoard extends React.Component {
         >
           See Top Links
         </button><br/><br/><br/><br/>
-        {this.state.showLeaders && list}
+        <div className= "list">{this.state.showLeaders && list}</div>
       </div>
     )
   }
