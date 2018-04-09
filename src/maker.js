@@ -38,13 +38,15 @@ class Maker extends React.Component {
   }
 
   render() {
+    const short = process.env.REACT_APP_API_URL + '/' + this.state.short
+
     return(
       <div>
         <h1>What link would you like to shorten?</h1>
         <form>
           <input type="text" name="fname" value= {this.state.input} onChange={this.handleChange}/>
           <button type="submit"onClick={this.handleFormSubmit}>Submit</button>
-          <h2>{this.state.short}</h2>
+          { this.state.short && <a href={short}>{short}</a> }
         </form>
       </div>
     )
