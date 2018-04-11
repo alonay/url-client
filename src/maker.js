@@ -6,6 +6,7 @@ class Maker extends React.Component {
     this.state = {
       input: '',
       short: '',
+      error: ''
     }
   }
 
@@ -16,9 +17,18 @@ class Maker extends React.Component {
   }
 
   show = (json) => {
-    this.setState({
-      short: json.short,
-    })
+    if (json.error !== undefined) {
+      this.setState({
+        short: '',
+        error: json.error.long[0]
+      })
+    } else {
+      this.setState({
+        short: json.short,
+        error: ''
+      })
+    }
+
   }
 
   handleFormSubmit = (event) => {
@@ -37,6 +47,14 @@ class Maker extends React.Component {
     .then(json => { this.show(json) })
   }
 
+  valid = () => {
+    if (this.state.error === ""){
+      return
+    }else{
+      return false
+    }
+  }
+
   render() {
     const short = process.env.REACT_APP_API_URL + '/' + this.state.short
 
@@ -46,7 +64,8 @@ class Maker extends React.Component {
         <form>
           <input type="text" className="fname" value= {this.state.input} onChange={this.handleChange} placeholder="Type Site Here"/>
           <button type="submit" className="button" onClick={this.handleFormSubmit}>Generate</button>
-          { this.state.short && <a href={short}>{short}</a> }
+          {this.state.short && <a href={short}>{short}</a>}
+          {this.state.error}
         </form>
       </div>
     )
